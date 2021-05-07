@@ -1,0 +1,49 @@
+{
+  "name": "repeat-api",
+  "version": "1.0.0",
+  "description": "The API to serve scenarios data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "./start",
+    "test": "mocha --timeout 10000 ./test/**/*.spec.js --exit",
+    "auth": "gcloud auth login",
+    "deploy": "gcloud config set project repeat-project && gcloud app deploy --quiet --verbosity=info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hyperobjekt/repeat-api"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "json2csv": "^5.0.5",
+    "jsonwebtoken": "^8.5.1",
+    "moment-timezone": "^0.5.31",
+    "mongodb": "^3.6.2",
+    "path": "^0.12.7",
+    "pg": "^8.4.2",
+    "pluralize": "^8.0.0",
+    "q": "^1.5.1",
+    "request": "^2.88.2",
+    "serve-favicon": "^2.5.0",
+    "slug": "^4.0.1"
+  },
+  "author": "Uri Maxima for HyperObjekt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hyperobjekt/repeat-api/issues"
+  },
+  "homepage": "https://github.com/Hyperobjekt/repeat-api#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "dreamjs": "^0.2.0",
+    "mocha": "^8.2.1",
+    "neat-csv": "^6.0.1",
+    "node-mocks-http": "^1.9.0",
+    "nodemon": "^2.0.6",
+    "rimraf": "^3.0.2",
+    "supertest": "^6.0.1"
+  }
+}
