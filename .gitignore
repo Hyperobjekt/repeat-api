@@ -21,11 +21,11 @@
 app.yaml
 
 # scripts
-start
-_scripts/_clean
-_scripts/_clean.*
-_scripts/_prefill
-_scripts/_prefill.*
+# start
+# _scripts/_clean
+# _scripts/_clean.*
+# _scripts/_prefill
+# _scripts/_prefill.*
 
 # Data
 
