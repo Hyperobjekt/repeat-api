@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "dev": "./start",
+    "dev": "./start.dev",
     "test": "mocha --timeout 10000 ./test/**/*.spec.js --exit",
     "auth": "gcloud auth login",
     "deploy": "gcloud config set project nzap-repeat-project && gcloud app deploy --quiet --verbosity=info"
