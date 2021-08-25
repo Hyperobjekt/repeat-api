@@ -1,19 +1,7 @@
 const router = require("express").Router();
 const _m = require("../../_middlewares");
 
-const data = require('../../_data/repeat_data.json')
-router.get('/', (req, res) => {
-  res.status(200).json(data)
-});
-
-// router.get(
-//   "/",
-//   _m.setQuery,
-//   _m.setPagination,
-//   _m.read,
-//   _m.count,
-//   _m.done
-// );
+router.get("/", _m.setQuery, _m.setPagination, _m.read, _m.count, _m.done);
 router.post("/", _m.setQuery, _m.setPagination, _m.read, _m.count, _m.done);
 router.get(
   "/csv",

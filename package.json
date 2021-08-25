@@ -8,7 +8,13 @@
     "dev": "./start.dev",
     "test": "mocha --timeout 10000 ./test/**/*.spec.js --exit",
     "auth": "gcloud auth login",
-    "deploy": "gcloud config set project nzap-repeat-project && gcloud app deploy --quiet --verbosity=info"
+    "deploy": "gcloud config set project nzap-repeat-project && gcloud app deploy --quiet --verbosity=info",
+    "mk_json": "./_scripts/_mk_json",
+    "mk_loadable": "./_scripts/_mk_loadable",
+    "mk_filters:dev": "./_scripts/_mk_filters.dev",
+    "upload:dev": "npm run mk_json && npm run mk_loadable && npm run db:dev:clean && npm run db:dev:prefill && npm run mk_filters:dev",
+    "db:dev:clean": "./_scripts/_clean.dev",
+    "db:dev:prefill": "./_scripts/_prefill.dev"
   },
   "repository": {
     "type": "git",

@@ -20,15 +20,18 @@
 *.pem
 app.yaml
 
-# scripts
-# start
-# _scripts/_clean
-# _scripts/_clean.*
-# _scripts/_prefill
-# _scripts/_prefill.*
+scripts
+start
+start.*
+_scripts/_clean
+_scripts/_clean.*
+_scripts/_prefill
+_scripts/_prefill.*
 
 # Data
-
+_data/*.csv
+_data/*.js
+_data/*_data.json
 
 # debug
 npm-debug.log*
