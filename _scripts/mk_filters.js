@@ -1,10 +1,10 @@
-// https://net-zero-america.nn.r.appspot.com/v1/load_filters
+// https://nzap-repeat-project.nn.r.appspot.com/v1/load_filters
 
-let url = "https://net-zero-america.nn.r.appspot.com/v1/load_filters";
+let url = "https://nzap-repeat-project.nn.r.appspot.com/v1/load_filters";
 if (process.argv[2] === "production")
-  url = "https://net-zero-america.nn.r.appspot.com/v1/load_filters";
+  url = "https://nzap-repeat-project.nn.r.appspot.com/v1/load_filters";
 if (process.argv[2] === "staging")
-  url = "https://staging-dot-net-zero-america.nn.r.appspot.com/v1/load_filters";
+  url = "https://staging-dot-nzap-repeat-project.nn.r.appspot.com/v1/load_filters";
 if (process.argv[2] === "dev") url = "http://localhost:5000/v1/load_filters";
 
 const request = require("request");

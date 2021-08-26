@@ -57,7 +57,7 @@ app.use((req, res, next) => {
     dbClient = await db();
     // const app = require('./app')();
     app.set('db', dbClient);
-    app.listen(process.env.PORT, () => console.log(`> Net Zero America API running:  http://localhost:${process.env.PORT}/${process.env.API_VERSION}`))
+    app.listen(process.env.PORT, () => console.log(`> REPEAT API running:  http://localhost:${process.env.PORT}/${process.env.API_VERSION}`))
   } catch (err) {
     console.error(err.stack || err);
   };
