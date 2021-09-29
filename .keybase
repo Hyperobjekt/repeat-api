@@ -1,0 +1,5 @@
+.env
+.env.development.local
+.env.production.local
+app.yaml
+staging.app.yaml
