@@ -53,13 +53,14 @@ const fs = require("fs");
     if (!insertTracker.includes(trackIndex)) {
       insertTracker.push(trackIndex);
       return (finalShapeIndexed[trackIndex] = {
-        _state: slug(row.state),
+      _state: slug(row.state),
         _category: slug(row.categories),
         _subcategory: slug(row.subcategories),
         _policy:
           row.policy === "Biden"
             ? "biden-administration-plan"
             : slug(row.policy),
+        units: row.units,
         state: row.state,
         category: row.categories,
         subcategory: row.subcategories,
