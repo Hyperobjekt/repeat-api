@@ -31,8 +31,8 @@ const fs = require("fs");
     ].join("-");
     if (insertTracker.includes(trackIndex)) {
       let policyKeys = Object.keys(row)
-        .filter((key) => key.includes("_policy_"))
-        .map((key) => key.split("_policy_"));
+        .filter((key) => key.includes("_pol_"))
+        .map((key) => key.split("_pol_"));
       let obj = {
         variable: row.variables,
         repeat: {
@@ -42,7 +42,7 @@ const fs = require("fs");
 
       policyKeys.forEach((key) => {
         obj[key[0]] = obj[key[0]] || {};
-        obj[key[0]][key[1]] = Number(row[`${key[0]}_policy_${key[1]}`]);
+        obj[key[0]][key[1]] = Number(row[`${key[0]}_pol_${key[1]}`]);
       });
 
       if (!finalShapeIndexed[trackIndex].variables.includes(row.variables)) {
@@ -56,10 +56,10 @@ const fs = require("fs");
       _state: slug(row.state),
         _category: slug(row.categories),
         _subcategory: slug(row.subcategories),
-        _policy:
-          row.policy === "Biden"
-            ? "biden-administration-plan"
-            : slug(row.policy),
+        _policy: slug(row.policy),
+          // row.policy === "BBB"
+          //   ? "biden-administration-plan"
+          //   : slug(row.policy),
         units: row.units,
         state: row.state,
         category: row.categories,
