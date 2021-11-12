@@ -29,6 +29,27 @@ const fs = require("fs");
       row.subcategories_index || "",
       row.policy_index || "",
     ].join("-");
+
+    if (!insertTracker.includes(trackIndex)) {
+      insertTracker.push(trackIndex);
+      finalShapeIndexed[trackIndex] = {
+      _state: slug(row.state),
+        _category: slug(row.categories),
+        _subcategory: slug(row.subcategories),
+        _policy: slug(row.policy),
+          // row.policy === "BBB"
+          //   ? "biden-administration-plan"
+          //   : slug(row.policy),
+        units: row.units,
+        state: row.state,
+        category: row.categories,
+        subcategory: row.subcategories,
+        policy: row.policy,
+        variables: [],
+        values: [],
+      };
+    }
+
     if (insertTracker.includes(trackIndex)) {
       let policyKeys = Object.keys(row)
         .filter((key) => key.includes("_pol_"))
@@ -48,26 +69,7 @@ const fs = require("fs");
       if (!finalShapeIndexed[trackIndex].variables.includes(row.variables)) {
         finalShapeIndexed[trackIndex].variables.push(row.variables);
       }
-      return finalShapeIndexed[trackIndex].values.push(obj);
-    }
-    if (!insertTracker.includes(trackIndex)) {
-      insertTracker.push(trackIndex);
-      return (finalShapeIndexed[trackIndex] = {
-      _state: slug(row.state),
-        _category: slug(row.categories),
-        _subcategory: slug(row.subcategories),
-        _policy: slug(row.policy),
-          // row.policy === "BBB"
-          //   ? "biden-administration-plan"
-          //   : slug(row.policy),
-        units: row.units,
-        state: row.state,
-        category: row.categories,
-        subcategory: row.subcategories,
-        policy: row.policy,
-        variables: [],
-        values: [],
-      });
+      finalShapeIndexed[trackIndex].values.push(obj);
     }
   });
 
