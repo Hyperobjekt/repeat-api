@@ -17,7 +17,7 @@ const fs = require("fs");
     let rowKeys = Object.keys(row).forEach((key) => {
       isNaN(row[key])
         ? (indexes[`${key}_index`] = slug(row[key]))
-        : (row[key] = Number(row[key]));
+        : (row[key] = row[key]);
     });
     return { ...indexes, ...row };
   });
@@ -61,7 +61,7 @@ const fs = require("fs");
       policyKeys.forEach((key) => {
         obj[key[0]] = obj[key[0]] || {};
         const val = row[`${key[0]}_pol_${key[1]}`];
-        obj[key[0]][key[1]] = val ? Number(val.toString().replace("?","")) : "N/A";
+        obj[key[0]][key[1]] = val === "" ? "N/A" : Number(val.replace("%", ""));
         obj[key[0]].deltas = { 2030: "", 2050: "" };
       });
 
