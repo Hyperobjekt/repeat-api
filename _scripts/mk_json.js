@@ -27,24 +27,21 @@ const fs = require("fs");
       row.state_index || "",
       row.categories_index || "",
       row.subcategories_index || "",
-      row.policy_index || "",
+      // row.policy_index || "",
     ].join("-");
 
     if (!insertTracker.includes(trackIndex)) {
       insertTracker.push(trackIndex);
       finalShapeIndexed[trackIndex] = {
-      _state: slug(row.state),
-        _category: slug(row.categories),
-        _subcategory: slug(row.subcategories),
-        _policy: slug(row.policy),
-          // row.policy === "BBB"
-          //   ? "biden-administration-plan"
-          //   : slug(row.policy),
+        _state: typeof row.state === "string" ? slug(row.state) : null,
+        _category: typeof row.categories === "string" ? slug(row.categories) : null,
+        _subcategory: typeof row.subcategories === "string" ? slug(row.subcategories) : null,
+        // _policy: typeof row.policy === "string" ? slug(row.policy) : null,
         units: row.units,
         state: row.state,
         category: row.categories,
         subcategory: row.subcategories,
-        policy: row.policy,
+        // policy: row.policy,
         variables: [],
         values: [],
       };
@@ -56,14 +53,16 @@ const fs = require("fs");
         .map((key) => key.split("_pol_"));
       let obj = {
         variable: row.variables,
-        repeat: {
-          deltas: { 2030: 0, 2050: 0 },
-        },
+        // repeat: {
+        //   deltas: { 2030: 0, 2050: 0 },
+        // },
       };
 
       policyKeys.forEach((key) => {
         obj[key[0]] = obj[key[0]] || {};
-        obj[key[0]][key[1]] = Number(row[`${key[0]}_pol_${key[1]}`]);
+        const val = row[`${key[0]}_pol_${key[1]}`];
+        obj[key[0]][key[1]] = val ? Number(val.toString().replace("?","")) : "N/A";
+        obj[key[0]].deltas = { 2030: "", 2050: "" };
       });
 
       if (!finalShapeIndexed[trackIndex].variables.includes(row.variables)) {
